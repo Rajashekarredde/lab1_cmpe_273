@@ -426,12 +426,14 @@ app.put("/updateItemImageById/:itemId", (req, res) => {
 app.get("/getShopById/:userId", (req, res) => {
   console.log("In get shop by id");
   const userId = req.params.userId;
+  console.log(userId);
   db.query("SELECT * FROM Users WHERE id=?", userId, (err, result) => {
     if (err) {
       res.send(err);
       console.log(err);
     } else {
       console.log(result);
+      console.log("-----------------------------");
       res.send({ success: true, result: result });
     }
   });
@@ -531,12 +533,16 @@ app.put("/updateUser/:id", async (req, res) => {
       const dob = req.body.dob;
       const userImage = req.file.filename;
       const about = req.body.about;
+      const phoneNumber = req.body.phoneNumber;
 
       console.log(userImage);
       console.log(userName);
+      console.log(
+        "Updateing profile --------------------------------: " + phoneNumber
+      );
       db.query(
-        "UPDATE Users set name = ?, city  = ?, dob  = ?, gender  = ?, about  = ?, profilePic=? where id = ? ",
-        [userName, city, dob, gender, about, userImage, userId],
+        "UPDATE Users set name = ?, city  = ?, dob  = ?, gender  = ?, about  = ?, phoneNumber =?, profilePic=? where id = ? ",
+        [userName, city, dob, gender, about, phoneNumber, userImage, userId],
         (err, result) => {
           console.log(result);
           if (err) {

@@ -16,6 +16,7 @@ function profileForm() {
   const [city, setCity] = useState("");
   const [dob, setDob] = useState("");
   const [about, setAbout] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleUserData = (e) => {
     e.preventDefault();
@@ -70,7 +71,8 @@ function profileForm() {
         // console.log(response);
 
         // console.log("In get of profile form");
-        if (response.data.success === true) {
+        if (response.data.success === true) 
+        {
           console.log("In get of profile form");
           console.log(response.data.result[0]);
           setUserName(response.data.result[0].name);
@@ -79,8 +81,11 @@ function profileForm() {
           setGender(response.data.result[0].gender);
           setCity(response.data.result[0].city);
           setAbout(response.data.result[0].about);
+          setPhoneNumber(localStorage.getItem("phone"));
           console.log("Products stored in product");
+
         }
+
       }
     );
   };
@@ -203,7 +208,18 @@ function profileForm() {
               </div>
 
               <div className="section">
-                <div className="label">Full Address</div>
+                <div className="label">Phone Number</div>
+                <input
+                  onChange={(event) => {
+                    setPhoneNumber(event.target.value);
+                  }}
+                  type="text"
+                  id="name"
+                />
+              </div>
+
+              <div className="section">
+                <div className="label">Address</div>
                 <input
                   defaultValue={user.fullAddress}
                   onChange={(event) => {
@@ -541,23 +557,6 @@ function profileForm() {
                   <option value="Zambia">Zambia</option>
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
-              </div>
-
-              <div className="section">
-                <div className="label">Birthday</div>
-                <input
-                  defaultValue=
-                  {
-                    dateFunction(user.dob)
-                      .toISOString()
-                      .split("T")[0]
-                  }
-                  type="date"
-                  style={{ marginLeft: "-2%" }}
-                  onChange={(event) => {
-                    setDob(event.target.value);
-                  }}
-                />
               </div>
 
               <button className="clicky" onClick={handleUserData}>

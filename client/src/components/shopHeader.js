@@ -5,6 +5,7 @@ import { getProducts } from "../features/productsSlice";
 import { selectUser } from "../features/userSlice";
 // import EditShop from "./ShopDetails/editShop";
 import EditShopImage from "./products/editShopImage";
+import logo from "../Images/shop.jpeg"
 
 function shopHeader() {
   const user = useSelector(selectUser);
@@ -42,7 +43,7 @@ function shopHeader() {
     <div className="shophome_header">
       {/* {shopImage} */}
       <div className="shop_details">
-        <img width="180px" src={"/Images/" + shopImage} alt="shop"></img>
+        <img width="180px" src={logo} alt="shop"></img>
 
         <div className="shop_info" style={{ marginLeft: "20px" }}>
           <h3 className="shop_name">{shopName}</h3>

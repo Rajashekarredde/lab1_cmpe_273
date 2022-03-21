@@ -45,7 +45,6 @@ const CartItem = ({ item }) => {
     >
       <div className="cartitem">
         <div className="cartitem__image">
-          {alert('sunny' + item.itemImage )}
           <img
             src={require("../Images/" + item.itemImage)}
             alt={item.itemName}

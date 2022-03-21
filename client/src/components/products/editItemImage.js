@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import CloseLogin from "../closeLogin";
+import FlashMessage from 'react-flash-message'
+
 
 function editItemImage({ setShowProductsEditPage, products, itemId }) {
   const [itemImage, setItemImage] = useState("");
@@ -18,8 +20,9 @@ function editItemImage({ setShowProductsEditPage, products, itemId }) {
       "/updateItemImageById/" + itemId,
       formData
     ).then((response) => {
-      if (response.data.success) {
-        console.log("Item details edited successfully.....");
+      if (response.data.success) 
+      {
+        alert("Item details edited successfully...");
       }
     });
     setShowProductsEditPage(false);

@@ -80,8 +80,10 @@ function EtsyBody() {
     }
   };
 
-  const handleFavourite = (itemId, userId) => {
+  const handleFavourite = (itemId, userId) => 
+  {
     console.log("Favourites added" + itemId + userId);
+    alert('Item Added To Favourites!');
     Axios.post("/addFavourite", {
       itemId: itemId,
       userId: userId,

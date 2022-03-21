@@ -66,6 +66,8 @@ function ProductOverView() {
     //   });
     //   console.log("Add to cart clicked");
     // }
+    alert('Item Added To Cart!');
+
   };
   return (
     <>
